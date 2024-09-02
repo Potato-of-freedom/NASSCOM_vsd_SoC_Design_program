@@ -22,6 +22,8 @@ FLOP RATIO = Number of D Flip Flops/Total Number of cells = 0.108 <br/>
 # Day 2: Good floorplan vs Bad floorplan and introduction to library cells
 
 Use the OpenLANE flow to run synthesis, floorplan and placement of the picorv32a design. <br/>
+Display the generated floorplan using magic <br/>
+
 ## Commands to invoke the OpenLANE flow: <br/>
 cd Desktop/work/tools/openlane_working_dir/openlane <br/>
 ./flow.tcl -interactive <br/>
@@ -39,5 +41,6 @@ run_placement <br/>
 Output <br/>
 ![Screenshot (323)](https://github.com/user-attachments/assets/11a5f65d-4286-4398-9edd-a3f5a49aded3)
 
-
-
+## Commands to use magic to display floorplan
+Placed floorplan:
+![Screenshot (325)](https://github.com/user-attachments/assets/57918e45-6715-4084-8067-11c33d274409)
