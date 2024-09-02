@@ -16,4 +16,8 @@ FLOP RATIO
 ![Screenshot (319)](https://github.com/user-attachments/assets/972f9376-8e4b-40d6-82ca-dd534239ae61)
 ![Screenshot (320)](https://github.com/user-attachments/assets/20cc228f-1fa9-49f5-a604-f6e3bbd65195)
 
-FLOP RATIO = Number of D Flip Flops/Total Number of cells = 0.108
+FLOP RATIO = Number of D Flip Flops/Total Number of cells = 0.108 <br/>
+<br/>
+# Day 2: Good floorplan vs Bad floorplan and introduction to library cells
+
+
