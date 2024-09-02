@@ -3,4 +3,11 @@
 Use the OpenLANE flow to do synthesis of the picorv32a design.<br/>
 Find the flop ratio in the picorv32a design using the synthesis output.<br/>
 
-https://private-user-images.githubusercontent.com/62582251/363760467-9cf259fc-cece-4a9e-bd58-ae8fcfa0ed4c.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjUyOTg1NDgsIm5iZiI6MTcyNTI5ODI0OCwicGF0aCI6Ii82MjU4MjI1MS8zNjM3NjA0NjctOWNmMjU5ZmMtY2VjZS00YTllLWJkNTgtYWU4ZmNmYTBlZDRjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MDIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTAyVDE3MzA0OFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk0YjBkYTc5NWVlNzVjMDNjMGYyMGZlYjIwMmZkYWQyMzFlMmU5N2M5MWI0M2Q5NjEzNWJiZWI3NTc4MWQ0YWMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.s6H1moYmvMUMltRBjnLF61L9eJEGG-ity2Avnsnk1SM
+## OpenLANE picorv32a synthesis output:
+FLOP RATIO
+
+![Screenshot (318)](https://github.com/user-attachments/assets/9cf259fc-cece-4a9e-bd58-ae8fcfa0ed4c)
+![Screenshot (319)](https://github.com/user-attachments/assets/972f9376-8e4b-40d6-82ca-dd534239ae61)
+![Screenshot (320)](https://github.com/user-attachments/assets/20cc228f-1fa9-49f5-a604-f6e3bbd65195)
+
+FLOP RATIO = Number of D Flip Flops/Total Number of cells = 0.108
