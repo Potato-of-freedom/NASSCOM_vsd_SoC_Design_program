@@ -33,4 +33,11 @@ run_placement <br/>
 
 ## OpenLANE picorv32a synthesis, floorplan and placement
 
+![Screenshot (321)](https://github.com/user-attachments/assets/3463901c-d5bf-4454-9b00-cc18fec93249)
+![Screenshot (322)](https://github.com/user-attachments/assets/a0d761af-bbea-4ff7-a342-c595c17fd10f)
+
+Output <br/>
+![Screenshot (323)](https://github.com/user-attachments/assets/11a5f65d-4286-4398-9edd-a3f5a49aded3)
+
+
 
