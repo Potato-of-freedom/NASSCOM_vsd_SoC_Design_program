@@ -31,9 +31,8 @@ package require openlane 0.9 <br/>
 prep -design picorv32a <br/>
 run_synthesis <br/>
 run_floorplan <br/>
-run_placement <br/>
 
-## OpenLANE picorv32a synthesis, floorplan and placement
+## OpenLANE picorv32a synthesis and floorplan
 
 ![Screenshot (321)](https://github.com/user-attachments/assets/3463901c-d5bf-4454-9b00-cc18fec93249)
 ![Screenshot (322)](https://github.com/user-attachments/assets/a0d761af-bbea-4ff7-a342-c595c17fd10f)
@@ -42,9 +41,20 @@ Output <br/>
 ![Screenshot (323)](https://github.com/user-attachments/assets/11a5f65d-4286-4398-9edd-a3f5a49aded3)
 
 ## Commands to use magic to display floorplan
-
+In another terminal tab, run: <br/>
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08_20-55/results/floorplan/ <br/>
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def & <br/>
 <br/>
-## Placed floorplan:
+## Floorplan:
 ![Screenshot (325)](https://github.com/user-attachments/assets/57918e45-6715-4084-8067-11c33d274409)
+## Verifying components:
+
+## Command to run placement and display result
+run_placement <br/>
+<br/>
+In the other terminal tab, run: <br/>
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08_20-55/results/placement/ <br/>
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def & <br/>
+<br/>
+## After placement:
+![Screenshot (330)](https://github.com/user-attachments/assets/3106326f-8a3e-41c1-9805-47dad6e6d60d)
