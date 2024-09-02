@@ -47,7 +47,13 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 <br/>
 ## Floorplan:
 ![Screenshot (325)](https://github.com/user-attachments/assets/57918e45-6715-4084-8067-11c33d274409)
-## Verifying components:
+## Verifying features of floorplan:
+Equidistant ports <br/>
+![Screenshot (326)](https://github.com/user-attachments/assets/573bdbfe-3545-4c5c-8ea1-0e8c13a36a34)
+Diagonally equidistant cells
+![Screenshot (327)](https://github.com/user-attachments/assets/5fcde12f-e8d2-42b2-9894-6a82e83ae941)
+Unplaced standard cells
+![Screenshot (329)](https://github.com/user-attachments/assets/14c93d83-3f2a-4739-bd9f-c53033578b67)
 
 ## Command to run placement and display result
 run_placement <br/>
