@@ -181,4 +181,12 @@ Fall cell delay = Time taken for output to fall to 50% - Time taken for input to
 
 # Day 4: Pre-layout timing analysis and importance of good clock tree
 
-
+* Prepare and verify the design to load into the flow. <br/>
+* Generate lef files from the custom inverter layout. <br/>
+* Add new generated extra lef into the flow in config.tcl <br/>
+* Reduce slack violations in synthesis. <br/>
+Run synthesis and placement and verify the cell is accepted into the flow. <br/>
+Post synthesis timing analysis using openSTA. <br/>
+Do timing ECO fixes. <br/>
+Use the new netlist to run floorplan, placement and CTS. <br/>
+Do post-CTS timing analysis
