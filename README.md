@@ -291,4 +291,37 @@ Design preparation, variable assignment and synthesis
 Note down design values like chip area, tns and wns before improving timing
 ![Screenshot (381)](https://github.com/user-attachments/assets/ef730dfe-dfa1-4aa9-b154-7d3ebdd414a2)
 ![Screenshot (379)](https://github.com/user-attachments/assets/51f45350-b338-4005-abd6-2cb993a6d808)
+<br/>
 
+## Command to change parameters and improve timing and synthesis
+```
+prep -design picorv32a -tag 01-09-_12-06 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+echo $::env(SYNTH_STRATEGY)
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+echo $::env(SYNTH_BUFFERING)
+echo $::env(SYNTH_SIZING)
+set ::env(SYNTH_SIZING) 1
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis
+```
+<br/>
+
+Preparation and synthesis
+![Screenshot (383)](https://github.com/user-attachments/assets/cceec874-98ee-4e94-b231-a13a4fd6b6e4)
+![Screenshot (385)](https://github.com/user-attachments/assets/b35d745a-7b9c-4b90-b169-e00de0d66b2a)
+<br/>
+
+Comparing previous timing values with the improved one
+![Screenshot (387)](https://github.com/user-attachments/assets/bbad5efe-b0f1-4b2d-bd88-017274c82f24)
+![Screenshot (386)](https://github.com/user-attachments/assets/844067a8-d669-4885-9de4-beb1d4630a98)
+<br/>
+
+Areas have increased and the worst negative slack decreased to 0. <br/>
+<br/>
+
+Use the improved netlist to run floorplan
+```
+run_floorplan
+```
