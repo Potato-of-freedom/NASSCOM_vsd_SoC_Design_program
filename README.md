@@ -64,3 +64,12 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 <br/>
 ## After placement:
 ![Screenshot (330)](https://github.com/user-attachments/assets/3106326f-8a3e-41c1-9805-47dad6e6d60d)
+![Screenshot (331)](https://github.com/user-attachments/assets/522427e0-c835-4894-a129-60d034b0be3f)
+
+# Day 3: Design library cell using Magic Layout and ngspice characterization
+Clone and load custom inverter standard cell design using Magic. <br/>
+Edit the spice file and do post-layout simulations using ngspice. <br/>
+<br/>
+## Commands to clone the git repository and load the custom inverter file
+
+
