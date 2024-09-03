@@ -129,4 +129,22 @@ Calculation
 ![Screenshot (355)](https://github.com/user-attachments/assets/3c092f27-cb6f-4cec-ab3c-b9049441ff0d)
 <br/>
 Fall transition time = Time taken for output to fall to 20% - Time taken for output to fall to 20% = 0.05989 ns <br/>
+<br/>
+## Rise cell delay calculation
+50% transitions
+![Screenshot (357)](https://github.com/user-attachments/assets/12c144cc-f0b6-4c60-9158-451bda626b6c)
+Calculation
+![Screenshot (358)](https://github.com/user-attachments/assets/1821215a-32cd-49a6-a413-a77604efc62a)
+<br/>
+Rise cell delay = Time taken for output to rise to 50% - Time taken for input to fall to 50% = 2.029 ns <br/>
+<br/>
+## Rise cell delay calculation
+50%
+![Screenshot (360)](https://github.com/user-attachments/assets/fdbee5af-53ca-4d6d-bb64-c1760f090f46)
+Calculation
+![Screenshot (361)](https://github.com/user-attachments/assets/d32f0cc0-dfe5-4a50-8b97-f4e4d31fed35)
+<br/>
+Fall cell delay = Time taken for output to fall to 50% - Time taken for input to rise to 50% = 3.6056 ns <br/>
+<br/>
 
+# Day 4: Pre-layout timing analysis and importance of good clock tree
