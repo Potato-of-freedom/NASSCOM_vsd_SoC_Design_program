@@ -283,3 +283,12 @@ run_synthesis
 ```
 <br/>
 
+Design preparation, variable assignment and synthesis
+![Screenshot (378)](https://github.com/user-attachments/assets/5f08989e-416f-48b5-a0a6-49795bbf1646)
+![Screenshot (380)](https://github.com/user-attachments/assets/10063568-5268-4059-bd41-de2409d2731c)
+<br/>
+
+Note down design values like chip area, tns and wns before improving timing
+![Screenshot (381)](https://github.com/user-attachments/assets/ef730dfe-dfa1-4aa9-b154-7d3ebdd414a2)
+![Screenshot (379)](https://github.com/user-attachments/assets/51f45350-b338-4005-abd6-2cb993a6d808)
+
