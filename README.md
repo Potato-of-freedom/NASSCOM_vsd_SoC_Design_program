@@ -5,11 +5,12 @@ Find the flop ratio in the picorv32a design using the synthesis output.<br/>
 <br/>
 ## Commands to invoke the OpenLANE flow:<br/>
 cd Desktop/work/tools/openlane_working_dir/openlane <br/>
+'''
 ./flow.tcl -interactive <br/>
 package require openlane 0.9 <br/>
 prep -design picorv32a <br/>
 run_synthesis <br/>
-
+'''
 ## OpenLANE picorv32a synthesis output:
 FLOP RATIO
 
