@@ -185,8 +185,23 @@ Fall cell delay = Time taken for output to fall to 50% - Time taken for input to
 * Generate lef files from the custom inverter layout. <br/>
 * Add new generated extra lef into the flow in config.tcl <br/>
 * Reduce slack violations in synthesis. <br/>
-Run synthesis and placement and verify the cell is accepted into the flow. <br/>
-Post synthesis timing analysis using openSTA. <br/>
-Do timing ECO fixes. <br/>
-Use the new netlist to run floorplan, placement and CTS. <br/>
-Do post-CTS timing analysis
+* Run synthesis and placement and verify the cell is accepted into the flow. <br/>
+* Post synthesis timing analysis using openSTA. <br/>
+* Do timing ECO fixes. <br/>
+* Use the new netlist to run floorplan, placement and CTS. <br/>
+* Do post-CTS timing analysis. <br/>
+<br/>
+
+## Conditions to check before inserting into the flow
+* The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks. <br/>
+* The width of the standard cell should be odd multiples of the horizontal track pitch. <br/>
+* The height of the standard cell should be even multiples of the vertical track pitch. <br/>
+<br/>
+
+## Commands to open custom inverter layout
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+magic -T sky130A.tech sky130_inv.mag &
+```
+
+## Conditions to check 
