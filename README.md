@@ -105,5 +105,7 @@ Edited spice file for transient analysis
 <br/>
 ngspice sky130_inv.spice <br/>
 plot y vs time a <br/>
+<br/>
+![Screenshot (345)](https://github.com/user-attachments/assets/ef02dc23-fcbc-46fc-9b81-b97caa36feb4)
 
 
