@@ -180,3 +180,5 @@ Fall cell delay = Time taken for output to fall to 50% - Time taken for input to
 <br/>
 
 # Day 4: Pre-layout timing analysis and importance of good clock tree
+
+
