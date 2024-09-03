@@ -87,7 +87,7 @@ Drain and MOS connectivity
 ![Screenshot (339)](https://github.com/user-attachments/assets/893dfd9f-f6b0-429f-ae20-6d13daa43de6)
 ![Screenshot (341)](https://github.com/user-attachments/assets/b15c81a1-4d2a-4806-9490-2974215d6d41)
 <br/>
-## To extract spice file
+## Commands to extract spice file
 In the tknon window, run: <br/>
 <br/>
 extract all <br/>
@@ -100,3 +100,10 @@ Created spice file
 ![Screenshot (343)](https://github.com/user-attachments/assets/83412945-559c-4609-a61a-47894bec2f62)
 Edited spice file for transient analysis
 ![Screenshot (344)](https://github.com/user-attachments/assets/70ad4c5b-a1f0-4ec0-98b3-306bc12d3610)
+<br/>
+## Commands to run ngspice simulation run
+<br/>
+ngspice sky130_inv.spice <br/>
+plot y vs time a <br/>
+
+
