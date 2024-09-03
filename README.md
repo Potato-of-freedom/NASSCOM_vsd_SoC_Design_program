@@ -270,3 +270,16 @@ Edited config.tcl file
 ![Screenshot (376)](https://github.com/user-attachments/assets/a4cc227c-c93e-42f7-8732-b11f16dcd798)
 <br/>
 
+## Commands to invoke OpenLANE flow and including the new lef
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+run_synthesis
+```
+<br/>
+
