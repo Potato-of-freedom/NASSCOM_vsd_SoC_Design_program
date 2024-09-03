@@ -4,8 +4,8 @@ Use the OpenLANE flow to do synthesis of the picorv32a design.<br/>
 Find the flop ratio in the picorv32a design using the synthesis output.<br/>
 <br/>
 ## Commands to invoke the OpenLANE flow:<br/>
-cd Desktop/work/tools/openlane_working_dir/openlane <br/>
 ```
+cd Desktop/work/tools/openlane_working_dir/openlane <br/>
 ./flow.tcl -interactive <br/>
 package require openlane 0.9 <br/>
 prep -design picorv32a <br/>
@@ -26,13 +26,14 @@ Use the OpenLANE flow to run synthesis, floorplan and placement of the picorv32a
 Display the generated floorplan using magic <br/>
 
 ## Commands to invoke the OpenLANE flow: <br/>
+```
 cd Desktop/work/tools/openlane_working_dir/openlane <br/>
 ./flow.tcl -interactive <br/>
 package require openlane 0.9 <br/>
 prep -design picorv32a <br/>
 run_synthesis <br/>
 run_floorplan <br/>
-
+```
 ## OpenLANE picorv32a synthesis and floorplan
 
 ![Screenshot (321)](https://github.com/user-attachments/assets/3463901c-d5bf-4454-9b00-cc18fec93249)
@@ -43,8 +44,10 @@ Output <br/>
 
 ## Commands to use magic to display floorplan
 In another terminal tab, run: <br/>
+```
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08_20-55/results/floorplan/ <br/>
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def & <br/>
+```
 <br/>
 ## Floorplan:
 ![Screenshot (325)](https://github.com/user-attachments/assets/57918e45-6715-4084-8067-11c33d274409)
@@ -57,11 +60,15 @@ Unplaced standard cells
 ![Screenshot (329)](https://github.com/user-attachments/assets/14c93d83-3f2a-4739-bd9f-c53033578b67)
 
 ## Command to run placement and display result
+```
 run_placement <br/>
+```
 <br/>
 In the other terminal tab, run: <br/>
+```
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08_20-55/results/placement/ <br/>
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def & <br/>
+```
 <br/>
 ## After placement:
 ![Screenshot (330)](https://github.com/user-attachments/assets/3106326f-8a3e-41c1-9805-47dad6e6d60d)
@@ -72,11 +79,13 @@ Clone and load custom inverter standard cell design using Magic. <br/>
 Edit the spice file and do post-layout simulations using ngspice. <br/>
 <br/>
 ## Commands to clone the git repository and load the custom inverter file
+```
 cd Desktop/work/tools/openlane_working_dir/openlane <br/>
 git clone https://github.com/nickson-jose/vsdstdcelldesign <br/>
 cd vsdstdcelldesign <br/>
 cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech . <br/>
 magic -T sky130A.tech sky130_inv.mag & <br/>
+```
 <br/>
 ![Screenshot (334)](https://github.com/user-attachments/assets/c249f192-f5b0-440b-8bb0-7475ed1b4a51)
 Inverter
@@ -91,9 +100,11 @@ Drain and MOS connectivity
 ## Commands to extract spice file
 In the tknon window, run: <br/>
 <br/>
+```
 extract all <br/>
 ext2spice cthresh 0 rthresh 0 <br/>
 ext2spice <br/>
+```
 <br/>
 spice file
 ![Screenshot (342)](https://github.com/user-attachments/assets/7a64211e-3794-4c7f-b8de-65053f1d890e)
@@ -104,8 +115,10 @@ Edited spice file for transient analysis
 <br/>
 ## Commands to run ngspice simulation run
 <br/>
+```
 ngspice sky130_inv.spice <br/>
 plot y vs time a <br/>
+```
 <br/>
 
 ![Screenshot (345)](https://github.com/user-attachments/assets/ef02dc23-fcbc-46fc-9b81-b97caa36feb4)
