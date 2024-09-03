@@ -93,6 +93,8 @@ In the tknon window, run: <br/>
 extract all <br/>
 ext2spice cthresh 0 rthresh 0 <br/>
 ext2spice <br/>
+<br/>
+spice file
 ![Screenshot (342)](https://github.com/user-attachments/assets/7a64211e-3794-4c7f-b8de-65053f1d890e)
 Created spice file
 ![Screenshot (343)](https://github.com/user-attachments/assets/83412945-559c-4609-a61a-47894bec2f62)
