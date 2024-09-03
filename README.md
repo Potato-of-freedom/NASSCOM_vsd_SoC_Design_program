@@ -110,7 +110,6 @@ plot y vs time a <br/>
 ![Screenshot (345)](https://github.com/user-attachments/assets/ef02dc23-fcbc-46fc-9b81-b97caa36feb4)
 <br/>
 ## Rise transition time calculation
-![Screenshot (349)](https://github.com/user-attachments/assets/427e2971-97dc-4adb-a9c2-dda12e2da200)
 20% (0.660)
 ![Screenshot (349)](https://github.com/user-attachments/assets/427e2971-97dc-4adb-a9c2-dda12e2da200)
 80% (2.64)
@@ -121,9 +120,9 @@ Calculation
 Rise transition time = Time taken for output to reach 80% - Time taken for output to reach 20% = 0.04258 ns <br/>
 <br/>
 ## Fall transition time calculation
-20%
+20% (0.660)
 ![Screenshot (353)](https://github.com/user-attachments/assets/535cd739-8e1f-42e6-b1c4-04f9c82d2385)
-80%
+80% (2.64)
 ![Screenshot (354)](https://github.com/user-attachments/assets/0355ad99-b879-4689-aa16-9bcfbbfec597)
 Calculation
 ![Screenshot (355)](https://github.com/user-attachments/assets/3c092f27-cb6f-4cec-ab3c-b9049441ff0d)
@@ -131,7 +130,7 @@ Calculation
 Fall transition time = Time taken for output to fall to 20% - Time taken for output to fall to 20% = 0.05989 ns <br/>
 <br/>
 ## Rise cell delay calculation
-50% transitions
+50% (1.65) 
 ![Screenshot (357)](https://github.com/user-attachments/assets/12c144cc-f0b6-4c60-9158-451bda626b6c)
 Calculation
 ![Screenshot (358)](https://github.com/user-attachments/assets/1821215a-32cd-49a6-a413-a77604efc62a)
@@ -139,7 +138,7 @@ Calculation
 Rise cell delay = Time taken for output to rise to 50% - Time taken for input to fall to 50% = 2.029 ns <br/>
 <br/>
 ## Rise cell delay calculation
-50%
+50% (1.65)
 ![Screenshot (360)](https://github.com/user-attachments/assets/fdbee5af-53ca-4d6d-bb64-c1760f090f46)
 Calculation
 ![Screenshot (361)](https://github.com/user-attachments/assets/d32f0cc0-dfe5-4a50-8b97-f4e4d31fed35)
