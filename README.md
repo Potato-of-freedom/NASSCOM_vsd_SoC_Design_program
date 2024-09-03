@@ -210,11 +210,11 @@ Tracks.info of sky130_fd_sc_hd
 
 ## Commands to set grids as tracks of locali layer and saving
 In the tkon window, run:
-'''
+```
 help grid
 grid 0.46um 0.34um 0.23um 0.17um
 save sky130_vsdinv.mag
-'''
+```
 <br/>
 
 tkon window and grid syntax
@@ -240,4 +240,33 @@ Open the newly saved layout and generate lef from layout
 ![Screenshot (371)](https://github.com/user-attachments/assets/8d4f8230-6a79-493f-808c-4620b2bd1829)
 <br/>
 
+Newly created lef file
+![Screenshot (373)](https://github.com/user-attachments/assets/2db7f9c2-89cc-4dcb-bb39-3f5de388c1c7)
+<br/>
+
+## Commands to copy libs and lef to picorv32a design src
+```
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+<br/>
+
+Verifying the files in the src directory 
+![Screenshot (375)](https://github.com/user-attachments/assets/c16b8117-525b-4cf0-90c0-1b9922e7da29)
+<br/>
+
+## Commands to edit 'config.tcl' to change the lib files and add extra lefs 
+```
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+<br/>
+
+Edited config.tcl file
+![Screenshot (376)](https://github.com/user-attachments/assets/a4cc227c-c93e-42f7-8732-b11f16dcd798)
+<br/>
 
