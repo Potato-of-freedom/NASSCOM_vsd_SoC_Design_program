@@ -49,7 +49,8 @@ cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
 <br/>
-## Floorplan:
+
+## Floorplan: 
 ![Screenshot (325)](https://github.com/user-attachments/assets/57918e45-6715-4084-8067-11c33d274409)
 ## Verifying features of floorplan:
 Equidistant ports <br/>
@@ -64,20 +65,24 @@ Unplaced standard cells
 run_placement
 ```
 <br/>
+
 In the other terminal tab, run: <br/>
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/31-08_20-55/results/placement/ 
 magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def & 
 ```
 <br/>
+
 ## After placement:
 ![Screenshot (330)](https://github.com/user-attachments/assets/3106326f-8a3e-41c1-9805-47dad6e6d60d)
 ![Screenshot (331)](https://github.com/user-attachments/assets/522427e0-c835-4894-a129-60d034b0be3f)
 <br/>
+
 # Day 3: Design library cell using Magic Layout and ngspice characterization
 Clone and load custom inverter standard cell design using Magic. <br/>
 Edit the spice file and do post-layout simulations using ngspice. <br/>
 <br/>
+
 ## Commands to clone the git repository and load the custom inverter file
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane 
@@ -87,6 +92,7 @@ cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/
 magic -T sky130A.tech sky130_inv.mag & 
 ```
 <br/>
+
 ![Screenshot (334)](https://github.com/user-attachments/assets/c249f192-f5b0-440b-8bb0-7475ed1b4a51)
 Inverter
 ![Screenshot (335)](https://github.com/user-attachments/assets/06b61a2d-c54f-4295-a34a-7ed4694268cd)
@@ -97,15 +103,18 @@ Drain and MOS connectivity
 ![Screenshot (339)](https://github.com/user-attachments/assets/893dfd9f-f6b0-429f-ae20-6d13daa43de6)
 ![Screenshot (341)](https://github.com/user-attachments/assets/b15c81a1-4d2a-4806-9490-2974215d6d41)
 <br/>
+
 ## Commands to extract spice file
 In the tknon window, run: <br/>
 <br/>
+
 ```
 extract all <br/>
 ext2spice cthresh 0 rthresh 0 <br/>
 ext2spice <br/>
 ```
 <br/>
+
 spice file
 ![Screenshot (342)](https://github.com/user-attachments/assets/7a64211e-3794-4c7f-b8de-65053f1d890e)
 Created spice file
@@ -113,8 +122,10 @@ Created spice file
 Edited spice file for transient analysis
 ![Screenshot (344)](https://github.com/user-attachments/assets/70ad4c5b-a1f0-4ec0-98b3-306bc12d3610)
 <br/>
+
 ## Commands to run ngspice simulation run
 <br/>
+
 ```
 ngspice sky130_inv.spice <br/>
 plot y vs time a <br/>
@@ -123,6 +134,7 @@ plot y vs time a <br/>
 
 ![Screenshot (345)](https://github.com/user-attachments/assets/ef02dc23-fcbc-46fc-9b81-b97caa36feb4)
 <br/>
+
 ## Rise transition time calculation
 20% (0.660)
 ![Screenshot (349)](https://github.com/user-attachments/assets/427e2971-97dc-4adb-a9c2-dda12e2da200)
@@ -131,8 +143,10 @@ plot y vs time a <br/>
 Calculation
 ![Screenshot (352)](https://github.com/user-attachments/assets/38c8b675-7d85-462f-a96a-80d728b89c4f)
 <br/>
+
 Rise transition time = Time taken for output to reach 80% - Time taken for output to reach 20% = 0.04258 ns <br/>
 <br/>
+
 ## Fall transition time calculation
 20% (0.660)
 ![Screenshot (353)](https://github.com/user-attachments/assets/535cd739-8e1f-42e6-b1c4-04f9c82d2385)
@@ -141,22 +155,27 @@ Rise transition time = Time taken for output to reach 80% - Time taken for outpu
 Calculation
 ![Screenshot (355)](https://github.com/user-attachments/assets/3c092f27-cb6f-4cec-ab3c-b9049441ff0d)
 <br/>
+
 Fall transition time = Time taken for output to fall to 20% - Time taken for output to fall to 20% = 0.05989 ns <br/>
 <br/>
+
 ## Rise cell delay calculation
 50% (1.65) 
 ![Screenshot (357)](https://github.com/user-attachments/assets/12c144cc-f0b6-4c60-9158-451bda626b6c)
 Calculation
 ![Screenshot (358)](https://github.com/user-attachments/assets/1821215a-32cd-49a6-a413-a77604efc62a)
 <br/>
+
 Rise cell delay = Time taken for output to rise to 50% - Time taken for input to fall to 50% = 2.029 ns <br/>
 <br/>
+
 ## Rise cell delay calculation
 50% (1.65)
 ![Screenshot (360)](https://github.com/user-attachments/assets/fdbee5af-53ca-4d6d-bb64-c1760f090f46)
 Calculation
 ![Screenshot (361)](https://github.com/user-attachments/assets/d32f0cc0-dfe5-4a50-8b97-f4e4d31fed35)
 <br/>
+
 Fall cell delay = Time taken for output to fall to 50% - Time taken for input to rise to 50% = 3.6056 ns <br/>
 <br/>
 
