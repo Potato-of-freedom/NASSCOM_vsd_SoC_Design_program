@@ -65,11 +65,36 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ## After placement:
 ![Screenshot (330)](https://github.com/user-attachments/assets/3106326f-8a3e-41c1-9805-47dad6e6d60d)
 ![Screenshot (331)](https://github.com/user-attachments/assets/522427e0-c835-4894-a129-60d034b0be3f)
-
+<br/>
 # Day 3: Design library cell using Magic Layout and ngspice characterization
 Clone and load custom inverter standard cell design using Magic. <br/>
 Edit the spice file and do post-layout simulations using ngspice. <br/>
 <br/>
 ## Commands to clone the git repository and load the custom inverter file
-
-
+cd Desktop/work/tools/openlane_working_dir/openlane <br/>
+git clone https://github.com/nickson-jose/vsdstdcelldesign <br/>
+cd vsdstdcelldesign <br/>
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech . <br/>
+magic -T sky130A.tech sky130_inv.mag & <br/>
+<br/>
+![Screenshot (334)](https://github.com/user-attachments/assets/c249f192-f5b0-440b-8bb0-7475ed1b4a51)
+Inverter
+![Screenshot (335)](https://github.com/user-attachments/assets/06b61a2d-c54f-4295-a34a-7ed4694268cd)
+NMOS and PMOS identification
+![Screenshot (338)](https://github.com/user-attachments/assets/02ad169b-9f2b-4663-85dd-3673325cd8bf)
+![Screenshot (337)](https://github.com/user-attachments/assets/11b57635-45a8-417a-90b9-829ff6eae673)
+Drain and MOS connectivity
+![Screenshot (339)](https://github.com/user-attachments/assets/893dfd9f-f6b0-429f-ae20-6d13daa43de6)
+![Screenshot (341)](https://github.com/user-attachments/assets/b15c81a1-4d2a-4806-9490-2974215d6d41)
+<br/>
+## To extract spice file
+In the tknon window, run: <br/>
+<br/>
+extract all <br/>
+ext2spice cthresh 0 rthresh 0 <br/>
+ext2spice <br/>
+![Screenshot (342)](https://github.com/user-attachments/assets/7a64211e-3794-4c7f-b8de-65053f1d890e)
+Created spice file
+![Screenshot (343)](https://github.com/user-attachments/assets/83412945-559c-4609-a61a-47894bec2f62)
+Edited spice file for transient analysis
+![Screenshot (344)](https://github.com/user-attachments/assets/70ad4c5b-a1f0-4ec0-98b3-306bc12d3610)
