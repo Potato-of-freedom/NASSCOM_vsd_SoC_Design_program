@@ -186,7 +186,7 @@ Fall cell delay = Time taken for output to fall to 50% - Time taken for input to
 * Add new generated extra lef into the flow in config.tcl <br/>
 * Reduce slack violations in synthesis. <br/>
 * Run synthesis and placement and verify the cell is accepted into the flow. <br/>
-* Post synthesis timing analysis using openSTA. <br/>
+* Post-synthesis timing analysis using openSTA. <br/>
 * Do timing ECO fixes. <br/>
 * Use the new netlist to run floorplan, placement and CTS. <br/>
 * Do post-CTS timing analysis. <br/>
@@ -204,4 +204,40 @@ cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 magic -T sky130A.tech sky130_inv.mag &
 ```
 
-## Conditions to check 
+Tracks.info of sky130_fd_sc_hd
+![Screenshot (362)](https://github.com/user-attachments/assets/c11a5916-111d-4586-ad35-45eb39b59d39)
+<br/>
+
+## Commands to set grids as tracks of locali layer and saving
+In the tkon window, run:
+'''
+help grid
+grid 0.46um 0.34um 0.23um 0.17um
+save sky130_vsdinv.mag
+'''
+<br/>
+
+tkon window and grid syntax
+![Screenshot (364)](https://github.com/user-attachments/assets/4e6c9c05-66dc-4e9a-ba9d-7eb10ac7ed7d)
+<br/>
+
+Verifying conditions: <br/>
+
+![Screenshot (367)](https://github.com/user-attachments/assets/b66d351e-9999-4460-9feb-ce0b696d4215)
+![Screenshot (366)](https://github.com/user-attachments/assets/e46fad12-d96b-4063-9b8b-ddd063d00f6f)
+<br/>
+
+Saving the final layout with a custom name:
+![Screenshot (368)](https://github.com/user-attachments/assets/9a2800cf-adf6-4f17-ac66-04e64ef1a08a)
+<br/>
+
+Verify the saved directory:
+![Screenshot (369)](https://github.com/user-attachments/assets/497cbfed-32dc-4eb3-80f6-4eb978e9ea56)
+<br/>
+
+Open the newly saved layout and generate lef from layout
+![Screenshot (370)](https://github.com/user-attachments/assets/2f2d57b2-641c-41bb-abe3-115a0219df3c)
+![Screenshot (371)](https://github.com/user-attachments/assets/8d4f8230-6a79-493f-808c-4620b2bd1829)
+<br/>
+
+
