@@ -372,3 +372,63 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 <br/>
 
+Image of the placed layout in magic
+![Screenshot (395)](https://github.com/user-attachments/assets/dc0055fc-fe59-489b-a1e1-658779a0cb54)
+
+Image of the custom inverter in the layout
+![Screenshot (396)](https://github.com/user-attachments/assets/f3a4ad0e-9663-4493-a1c2-81fc7df29ad0)
+
+## Command for the tkon window to view internal layout of the cell
+```
+expand
+```
+<br/>
+
+Internal layout of the cell
+![Screenshot (397)](https://github.com/user-attachments/assets/bf17bc1b-8627-42b5-a9e2-7e07c029e67b)
+<br/>
+
+## Commands to do synthesis including the new lef
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_SIZING) 1
+run_synthesis
+```
+## Command to create new pre_sta.conf
+In another terminal:
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+vim pre_sta.conf
+```
+<br/>
+
+Newly created pre_sta.conf file
+![Screenshot (498)](https://github.com/user-attachments/assets/78738816-e29e-4404-b4d3-8bb64cdb9771)
+<br/>
+
+## Command to create new my_base.sdc
+In another terminal 
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src
+vim my_base.sdc
+```
+<br/>
+
+Image of the newly created my_base.sdc file
+![Screenshot (499)](https://github.com/user-attachments/assets/eb27b76c-99d1-4bd2-b59c-6fd9b23bbe98)
+<br/>
+
+## Commands to run STA
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+sta pre_sta.conf
+```
+<br/>
+
+
