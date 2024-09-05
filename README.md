@@ -329,4 +329,46 @@ Use the improved netlist to run floorplan
 ```
 run_floorplan
 ```
+<br/>
+
+Floorplan run
+![Screenshot (389)](https://github.com/user-attachments/assets/48c5fd3b-06bb-4b5f-915a-3a5f458a4251)
+<br/>
+
+Since we are facing errors in the floorplan, we run in it segments:
+
+## Commands to run floorplan in segments
+```
+init_floorplan
+place_io
+tap_decap_or
+```
+<br/>
+
+Segment run:
+![Screenshot (390)](https://github.com/user-attachments/assets/c0814c94-a53c-404d-b9e5-52c01d274ead)
+![Screenshot (391)](https://github.com/user-attachments/assets/f3ed4725-9d86-4df9-8774-4ac4b02fddbd)
+![Screenshot (392)](https://github.com/user-attachments/assets/6214d46b-2fd6-494e-8e3a-65bad5c66729)
+<br/>
+
+Now run placement:
+```
+run_placement
+```
+<br/>
+
+After placement:
+![Screenshot (393)](https://github.com/user-attachments/assets/265b3ece-8b36-47c1-9149-af8d72771ba7)
+<br/>
+
+Verifying the new .def file
+![Screenshot (394)](https://github.com/user-attachments/assets/763bbdd3-298e-4b0a-9c54-33aa1d8db279)
+<br/>
+
+## Commands to load placement def in magic in another terminal
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/01-09_12-06/results/placement/
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+```
+<br/>
 
