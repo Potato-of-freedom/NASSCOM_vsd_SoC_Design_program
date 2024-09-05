@@ -574,3 +574,103 @@ run_placement
 run_cts
 ```
 <br/>
+
+Run
+![Screenshot (426)](https://github.com/user-attachments/assets/4bc62985-041d-442c-a6ae-ac8502aee96a)
+![Screenshot (427)](https://github.com/user-attachments/assets/b6306ce3-d09b-4114-aa47-286b76b8dd20)
+![Screenshot (428)](https://github.com/user-attachments/assets/c7cc9abb-575e-40e8-a21b-c2c080c0e82d)
+![Screenshot (429)](https://github.com/user-attachments/assets/050a8542-4277-419b-8579-1b280c6b1a8e)
+![Screenshot (430)](https://github.com/user-attachments/assets/7c99db3f-12d7-408d-b0ac-ce65b46ac785)
+![Screenshot (431)](https://github.com/user-attachments/assets/ee5b1d78-a597-4ca7-b570-a8244d3750ab)
+![Screenshot (432)](https://github.com/user-attachments/assets/eabfea58-cd8e-447b-81dd-f42878bba0cf)
+<br/>
+
+## Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+```
+openroad
+read_lef /openLANE_flow/designs/picorv32a/runs/01-09-_12-06/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+write_db pico_cts.db
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/01-09-_12-06/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+help report_checks
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+exit
+```
+<br/>
+
+Run
+![Screenshot (433)](https://github.com/user-attachments/assets/d96dd557-1f6f-4acb-b799-3fc33289953b)
+![Screenshot (434)](https://github.com/user-attachments/assets/0ceb982a-125d-43e5-9248-f861e20d5f1e)
+![Screenshot (436)](https://github.com/user-attachments/assets/37ac9622-469b-4fac-a910-3afbceaca09d)
+![Screenshot (437)](https://github.com/user-attachments/assets/c31eba83-0cc2-4738-9bf2-3968c06c5e32)
+![Screenshot (438)](https://github.com/user-attachments/assets/b9457b34-ed7a-41a5-86ae-886188141d4e)
+![Screenshot (439)](https://github.com/user-attachments/assets/6b7f2a6c-059c-45d6-9ff3-a81e9f1ab532)
+![Screenshot (440)](https://github.com/user-attachments/assets/5ec19132-ce5f-4d19-bdde-2213a542020d)
+![Screenshot (441)](https://github.com/user-attachments/assets/378bffc9-3ad1-47e1-9e18-eb72aef6903e)
+![Screenshot (442)](https://github.com/user-attachments/assets/cd13e8b2-cc0a-4b26-86e9-2341999c68ef)
+![Screenshot (443)](https://github.com/user-attachments/assets/a6d6e1f4-54ce-41e9-939b-fa9f2866c57f)
+![Screenshot (444)](https://github.com/user-attachments/assets/b8cc0d1b-945b-47d1-bd3a-d7c6f3ec2f4c)
+![Screenshot (445)](https://github.com/user-attachments/assets/9a855d0c-10b7-4d8a-96d3-df535d3882fa)
+![Screenshot (446)](https://github.com/user-attachments/assets/343f0ce1-38c3-44ad-9456-8c331ec564f2)
+![Screenshot (447)](https://github.com/user-attachments/assets/b7eb3fa7-d789-4bb8-9564-c046a3953c76)
+![Screenshot (450)](https://github.com/user-attachments/assets/5c856c79-e070-4fb0-9279-149a664d5a1e)
+<br/>
+
+## Commands to be run in OpenLANE flow to do OpenROAD timing analysis after changing CTS_CLK_BUFFER_LIST
+```
+echo $::env(CTS_CLK_BUFFER_LIST)
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+echo $::env(CTS_CLK_BUFFER_LIST)
+echo $::env(CURRENT_DEF)
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/placement/picorv32a.placement.def
+run_cts
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+openroad
+read_lef /openLANE_flow/designs/picorv32a/runs/24-03_10-03/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+write_db pico_cts1.db
+read_db pico_cts.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis_cts.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+report_clock_skew -hold
+report_clock_skew -setup
+exit
+echo $::env(CTS_CLK_BUFFER_LIST)
+set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+<br/>
+
+Run and timing report
+![Screenshot (451)](https://github.com/user-attachments/assets/bdb8252c-cadc-41e1-976e-8bff5fafdd38)
+![Screenshot (452)](https://github.com/user-attachments/assets/87683b9e-0894-44c1-be51-6d584c8c4dbb)
+![Screenshot (453)](https://github.com/user-attachments/assets/b3615485-f2a9-4ca9-809a-a093349d3de5)
+![Screenshot (454)](https://github.com/user-attachments/assets/b33397ae-4b07-4d5b-ab12-377c3be14e03)
+![Screenshot (455)](https://github.com/user-attachments/assets/834dc221-28b9-4ef7-b40d-55599c6b762e)
+![Screenshot (456)](https://github.com/user-attachments/assets/ca371543-5ea5-465d-ab22-2d4c696d87ef)
+![Screenshot (457)](https://github.com/user-attachments/assets/7c59272e-b9f4-4163-a912-173baa6e6433)
+![Screenshot (458)](https://github.com/user-attachments/assets/d95f9dde-e3cb-4516-9a36-9f9a5686fd59)
+![Screenshot (459)](https://github.com/user-attachments/assets/b2b6659b-e661-46f7-839c-c97a936a0690)
+![Screenshot (460)](https://github.com/user-attachments/assets/18c06e61-110f-42ae-9807-29f9a30b4eb7)
+![Screenshot (461)](https://github.com/user-attachments/assets/f0114c4e-f4df-4845-bcc3-fa3483119070)
+![Screenshot (462)](https://github.com/user-attachments/assets/b2fbf07c-e3c1-467e-9615-9208c8b75987)
+![Screenshot (463)](https://github.com/user-attachments/assets/93a8a4f0-0850-464f-9ad9-87fffeeb58d2)
+![Screenshot (464)](https://github.com/user-attachments/assets/1e13e90d-f0f1-42ae-801c-feb911819dad)
+![Screenshot (465)](https://github.com/user-attachments/assets/42b28514-ad2f-4b04-9501-e8286ecb6ae9)
+![Screenshot (466)](https://github.com/user-attachments/assets/00c61d20-b674-41ef-878d-04950b119c53)
+![Screenshot (467)](https://github.com/user-attachments/assets/c53fa67b-353c-4f2f-94c7-eb7a75e9d652)
+![Screenshot (468)](https://github.com/user-attachments/assets/b189c1bb-b221-409b-a1f1-c57025bd499a)
+![Screenshot (469)](https://github.com/user-attachments/assets/58a40b96-f403-4871-9604-cf3861ef2ad6)
+<br/>
+
+# Day 5: Final steps for RTL2GDS using tritonRoute and openSTA
