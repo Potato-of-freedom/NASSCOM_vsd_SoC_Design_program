@@ -431,4 +431,132 @@ sta pre_sta.conf
 ```
 <br/>
 
+![Screenshot (401)](https://github.com/user-attachments/assets/19af5d8e-579a-4924-825d-d2bc993112e1)
+<br/>
 
+Since there is high fanout causing delay, we can add a parameter to reduce fanout and run synthesis again:
+<br/>
+
+## Commands to run syntheis  with lesser fanout
+```
+prep -design picorv32a -tag 01-09_13-23 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_SIZING) 1
+set ::env(SYNTH_MAX_FANOUT) 4
+echo $::env(SYNTH_DRIVING_CELL)
+run_synthesis
+```
+<br/>
+
+## Command to rerun STA in another terminal
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+sta pre_sta.conf
+```
+<br/>
+
+Improved timings with slack vioaltions.
+![Screenshot (402)](https://github.com/user-attachments/assets/ccfd19c2-9d30-4531-807a-3d2e45958460)
+<br/>
+
+Making timing ECO fixes to remove all violations <br/>
+
+OR gate of drive strength 2 is driving 4 fanouts
+![Screenshot (405)](https://github.com/user-attachments/assets/33768118-0451-48e3-ba53-1c4bb9cb2bfc)
+
+## Commands to optimize timing by replacing with OR gate of drive strength 4
+```
+report_net -connections _11672_
+replace_cell _14510_ sky130_fd_sc_hd__or3_4
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+Another STA run reveals a lower slack
+![Screenshot (408)](https://github.com/user-attachments/assets/415d929f-40be-4086-8d36-3078e6610629)
+
+Further optimizing:
+## Commands to optimize timing by replacing with OR gate of drive strength 4
+```
+report_net -connections _11675_
+replace_cell _14514_ sky130_fd_sc_hd__or3_4
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+<br/>
+
+Reduced slack
+![Screenshot (410)](https://github.com/user-attachments/assets/329d76ec-c486-466a-b62d-fa81e29f2a23)
+OR gate of drive strength 2 driving OA gate has more delay
+![Screenshot (412)](https://github.com/user-attachments/assets/768cdc14-1c84-43d4-9d70-28ef711b0e3e)
+<br/>
+
+Further optimizing:
+## Commands to optimize timing by replacing with OR gate of drive strength 4
+```
+report_net -connections _11643_
+replace_cell _14481_ sky130_fd_sc_hd__or4_4
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+<br/>
+
+Reduced slack
+![Screenshot (414)](https://github.com/user-attachments/assets/37f601dc-0a79-4c5b-9e4b-17be7909fc58)
+OR gate of drive strength 2 driving OA gate has more delay
+![Screenshot (415)](https://github.com/user-attachments/assets/483d0c69-7721-473b-bdb5-28e8aefa6aec)
+<br/>
+
+Further optimizing:
+## Commands to optimize timing by replacing with OR gate of drive strength 4
+```
+report_net -connections _11668_
+replace_cell _14506_ sky130_fd_sc_hd__or4_4
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+<br/>
+
+Reduced slack
+![Screenshot (417)](https://github.com/user-attachments/assets/bfcc4a2d-54f0-4be0-b162-5bc83eb365b3)
+<br/>
+
+## Commands to verify instance _14506_ is replaced with sky130_fd_sc_hd__or4_4
+```
+report_checks -from _29043_ -to _30440_ -through _14506_
+```
+<br/>
+
+Verified instance
+![Screenshot (418)](https://github.com/user-attachments/assets/a8faf771-7021-4903-89e4-81450bd0210c)
+<br/>
+
+We started ECO fixes at wns -23.9000 and now we stand at wns -22.6173 we reduced around 1.2827 ns of violation
+![Screenshot (419)](https://github.com/user-attachments/assets/09d15d92-99f3-45e2-a85a-4470986b6475)
+<br/>
+
+## Commands to make copy of netlist
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/01-09_13-23/results/synthesis/
+cp picorv32a.synthesis.v picorv32a.synthesis_old.v
+```
+<br/>
+
+Verify new created netlist
+![Screenshot (420)](https://github.com/user-attachments/assets/e8a457f2-ee34-455a-a084-331143f79234)
+<br/>
+
+## Commands to write verilog
+```
+help write_verilog
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/01-09_13-23/results/synthesis/picorv32a.synthesis.v
+exit
+```
+
+Write verilog step
+![Screenshot (422)](https://github.com/user-attachments/assets/8d11fae3-0daf-498a-bbed-c70db8d58be2)
+<br/>
+
+Verified that the netlist is overwritten by checking that instance _14506_ is replaced with sky130_fd_sc_hd__or4_4
+![Screenshot (423)](https://github.com/user-attachments/assets/c3145e23-7624-44bb-845a-092e7f08bf84)
+<br/>
+
+
+## Commands load the design
