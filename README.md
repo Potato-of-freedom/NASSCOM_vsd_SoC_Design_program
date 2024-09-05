@@ -308,6 +308,10 @@ run_synthesis
 ```
 <br/>
 
+Updated lef with the custom inverter
+![Screenshot (373)](https://github.com/user-attachments/assets/db12db90-3e60-44f3-9839-e43ab670471d)
+<br/>
+
 Preparation and synthesis
 ![Screenshot (383)](https://github.com/user-attachments/assets/cceec874-98ee-4e94-b231-a13a4fd6b6e4)
 ![Screenshot (385)](https://github.com/user-attachments/assets/b35d745a-7b9c-4b90-b169-e00de0d66b2a)
@@ -325,3 +329,4 @@ Use the improved netlist to run floorplan
 ```
 run_floorplan
 ```
+
