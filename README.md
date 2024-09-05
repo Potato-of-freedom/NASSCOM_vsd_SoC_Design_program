@@ -560,3 +560,17 @@ Verified that the netlist is overwritten by checking that instance _14506_ is re
 
 
 ## Commands load the design
+```
+prep -design picorv32a -tag 01-09-_12-06 -overwrite
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+set ::env(SYNTH_SIZING) 1
+run_synthesis
+init_floorplan
+place_io
+tap_decap_or
+run_placement
+run_cts
+```
+<br/>
