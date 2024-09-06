@@ -1,6 +1,7 @@
 # NASSCOM Digital VLSI SoC Design and Planning Workshop
 <br/>
 <br/>
+
 # Day 1: Inception of open-source EDA, OpenLANE and sky130 PDK
 
 Use the OpenLANE flow to do synthesis of the picorv32a design.<br/>
