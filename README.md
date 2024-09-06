@@ -674,3 +674,117 @@ Run and timing report
 <br/>
 
 # Day 5: Final steps for RTL2GDS using tritonRoute and openSTA
+<br/>
+
+* Perform generation of Power Distribution Network (PDN).
+* Perfrom detailed routing using TritonRoute.
+* Post-route parasitic extraction.
+* Post-Route OpenSTA timing analysis with the extracted parasitics of the route.
+<br/>
+
+## Commands to run to run til Clock Tree Synthesis(CTS)
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+docker
+
+./flow.tcl -interactive
+package require openlane 0.9
+prep -design picorv32a
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+set ::env(SYNTH_SIZING) 1
+run_synthesis
+
+init_floorplan
+place_io
+tap_decap_or
+
+run_placement
+
+run_cts
+```
+<br/>
+
+## Commands to generate Power Distribution Network(PDN)
+```
+gen_pdn
+```
+<br/>
+
+![Screenshot (470)](https://github.com/user-attachments/assets/b1979c0c-0a4b-4f5b-8092-e6ed98911c1f)
+![Screenshot (471)](https://github.com/user-attachments/assets/749822d4-1046-4cfe-ab0c-759d88593a80)
+<br/>
+
+## Commands to load PDN def in magic in another terminal
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/03-09_06-13/tmp/floorplan/
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read 14-pdn.def &
+```
+<br/>
+
+![Screenshot (472)](https://github.com/user-attachments/assets/5b705436-224f-491f-9a6a-e683e6f6f9db)
+![Screenshot (473)](https://github.com/user-attachments/assets/a182ef71-4ab0-465b-aded-62c54eb7d4b3)
+![Screenshot (474)](https://github.com/user-attachments/assets/9419e855-64bd-402d-bebd-199edc06f740)
+![Screenshot (475)](https://github.com/user-attachments/assets/3345567a-7107-400a-b66f-06cfa7d3c9b1)
+
+## Commands to perform routing
+```
+echo $::env(CURRENT_DEF)
+echo $::env(ROUTING_STRATEGY)
+run_routing
+```
+<br/>
+
+![Screenshot (476)](https://github.com/user-attachments/assets/4109931d-f1a7-4841-9b03-41b1efcf09ff)
+![Screenshot (477)](https://github.com/user-attachments/assets/45597ac3-e5ed-4e84-a585-88a0b036500f)
+![Screenshot (478)](https://github.com/user-attachments/assets/38407cbd-0541-42f0-853f-e9c758b83822)
+
+## Commands to load routed def in magic in another terminal
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/03-09_06-13/results/routing/
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.def &
+```
+<br/>
+
+Routed def
+![Screenshot (479)](https://github.com/user-attachments/assets/c6acc800-bcc2-45d9-8fd6-da9bc6ac71c6)
+![Screenshot (480)](https://github.com/user-attachments/assets/08908b2a-c11d-4b1e-be3d-576cc0869b01)
+![Screenshot (481)](https://github.com/user-attachments/assets/d562c9b2-4e94-4e69-86b3-5e0fe4cb45df)
+![Screenshot (482)](https://github.com/user-attachments/assets/617de080-2fa1-4790-805a-848ba45f6730)
+![Screenshot (483)](https://github.com/user-attachments/assets/00b8ed68-f137-4f81-b757-fa4893eeaa8d)
+<br/>
+fastroute.guide present in openlane/designs/picorv32a/runs/03-09_06-13/tmp/routing directory
+![Screenshot (484)](https://github.com/user-attachments/assets/fc947463-a1db-493a-8812-aac9094d7629)
+<br/>
+
+Since SPEF extraction is done along with routing in this version, it is unnecessary to do it separately.
+<br/>
+
+## Commands to be run in OpenLANE flow to do OpenROAD timing analysis with integrated OpenSTA in OpenROAD
+```
+openroad
+read_lef /openLANE_flow/designs/picorv32a/runs/03-09_06-13/tmp/merged.lef
+read_def /openLANE_flow/designs/picorv32a/runs/03-09_06-13/results/routing/picorv32a.def
+write_db pico_route.db
+read_db pico_route.db
+read_verilog /openLANE_flow/designs/picorv32a/runs/03-09_06-13/results/synthesis/picorv32a.synthesis_preroute.v
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+link_design picorv32a
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+set_propagated_clock [all_clocks]
+read_spef /openLANE_flow/designs/picorv32a/runs/03-09_06-13/results/routing/picorv32a.spef
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+exit
+```
+<br/>
+
+Run
+![Screenshot (492)](https://github.com/user-attachments/assets/98048fad-d0ad-4bb7-8db7-17b30d071100)
+
+Result
+![Screenshot (493)](https://github.com/user-attachments/assets/6dd6fd8b-cef9-47d5-a753-42c817c5adb9)
+![Screenshot (494)](https://github.com/user-attachments/assets/008246a8-7016-4de7-b76f-7d34e369c180)
+![Screenshot (495)](https://github.com/user-attachments/assets/5dc8819a-7523-462b-bd69-9690e634262f)
+![Screenshot (496)](https://github.com/user-attachments/assets/155a41ff-66a8-4264-8152-963771d8b5ec)
+![Screenshot (497)](https://github.com/user-attachments/assets/6d1177bc-caaa-41a5-9678-2fa8be8e2dcc)
