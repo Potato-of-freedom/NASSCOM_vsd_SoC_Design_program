@@ -1,5 +1,8 @@
-# NASSCOM Digital VLSI SoC Design and Planning Workshop
+# NASSCOM Digital VLSI SoC Design and Planning Workshop (21/08/2024 - 03/09/2024)
 <br/>
+
+Digital VLSI SoC design and planning workshop with complete RTL2GDSII flow organised by VSD in collaboration with NASSCOM.
+
 <br/>
 
 # Day 1: Inception of open-source EDA, OpenLANE and sky130 PDK
